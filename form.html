@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <title>form page</title>
+        <link rel="stylesheet" href="style1.css"></link>
+    <style>
+    body{
+    background-image:url('https://media.istockphoto.com/id/1319031310/photo/doctor-writing-a-medical-prescription.jpg?s=612x612&w=0&k=20&c=DWZGM8lBb5Bun7cbxhKT1ruVxRC_itvFzA9jxgoA0N8=');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    }
+    </style>
+    </head>
+    <body>
+        <div class="inner-layer">
+            <div class="container">
+                <div class="row no-margin">
+                    <div class="col-sm-7">
+                        <div class="content">
+                         <h1 style="text-align:center;">Make Your Appointment</h1>
+            
+                        </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-data" style="margin-top:25px;
+                            background-color:#fff;
+                             margin-bottom:15px;
+    width: 500px;margin-left: 100px;">
+                                <div class="form-head">
+                                    <h3 align="center" style="padding-top: 20px;">Please fill the below form to get your appointment.</h3>
+                                </div>
+                            <div class="form-body" style="padding-left: 100px;" >
+                                <div class="row form-row">
+                                <form method="post" action="/">
+                                    <br>
+                                <input type="text" name="Name" placeholder="Enter Full Name" class="form-control" size="30" height="100px" style="font-size:18px;" required></input>
+                                </div>
+                                
+                            <div class="row form-row">
+                                <input type="text" name="Phone" placeholder="Enter Mobile Number" class="form-control" size="30" style="font-size:18px;" required></input>
+                                </div>
+                                <br>
+                                <div class="row form-row">
+                                <input type="text" name="Age" placeholder="Enter Age" class="form-control" size="30" style="font-size:18px;" required></input><br><br>
+                                </div>
+                                
+                               <div class="row form-row">
+                                    <label for="name" style="font-size:18px;"><b>Gender:</b></label><br>
+                                    <select name="Gender" id="Gender">
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Others">Others</option>
+                                    </select>
+                                </div>
+                                <br>
+                              <div class="row form-row">
+                                    <label for="name" style="font-size:18px;"><b>Date of Appointment:</b></label><br>
+                                <input type="date" name="DOA" placeholder="Enter Appointment Date" class="form-control"></input>
+                                </div> 
+                                <br>
+                                <div class="row form-row" >
+                                    <button class="btn btn-success btn-appointment" onclick="message()" style="height:50px;
+                                    width:200px;border-radius:25px;
+                                    background:#009688;
+                                    position:absolute;">Make an Appointment</button>
+                                  <!-- <div class="message">
+                                        <div class="success" id="success">Thank you for taking appointment<br>Your data successfully received</div>
+                                    </div>
+                                    <div class="danger" id="danger">Fields can't be empty</div>-->
+                                </form></div>
+                            </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div> 
+        </div>
+       
+    </body>
+<script src="form.js"></script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbz7rMyqaQ4qCxiYQ8vBFVE1bimS6iJ7_QXsFnUQRUfHrOGChRi-qRc099nqPgfWWtypqg/exec'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Successfully submitted!', response))
+            .catch(error => console.error('Error!', error.message))
+            alert("THANK YOU FOR TAKING APPOINTMENT...\n We have successfully received your data. ");
+        })
+      </script>
+
+      <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js";
+        import { getDatabase } from "https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyChEGVr8v81-r6RP4E7phFrhJAFZ9HjpOM",
+          authDomain: "appointment-app-efe25.firebaseapp.com",
+          databaseURL: "https://appointment-app-efe25-default-rtdb.firebaseio.com",
+          projectId: "appointment-app-efe25",
+          storageBucket: "appointment-app-efe25.appspot.com",
+          messagingSenderId: "775620345159",
+          appId: "1:775620345159:web:81ad21a51c1fecdf282062"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const database=getDatabase(app);
+      </script>    
+</html>
